@@ -1,32 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-    <head>
-        <title>Jogo da Memória</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/index.css">
-    </head>
 
-    <body>
-        <header>
-            <span>Tentativas: 0</span>
-            <button id="btnReset">Reiniciar</button>
-        </header>
+<head>
+  <title>Jogo da Memória</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <main class="game-board">
-            <button class="card">?</button>
-            <button class="card">?</button>
-            <button class="card">?</button>
-            <button class="card">?</button>
-            <button class="card">?</button>
-            <button class="card">?</button>
-            <button class="card">?</button>
-            <button class="card">?</button>
-            <button class="card">?</button>
-            <button class="card">?</button>
-            <button class="card">?</button>
-            <button class="card">?</button>
-        </main>
-        <script src="js/index.js"></script>
-    </body>
+  <link rel="icon" href="https://i.pinimg.com/736x/f4/a9/f3/f4a9f34d516e507b33aef727ba9205ae.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body data-theme="light">
+  <header class="header">
+    <div class="header-inner">
+      <div class="player-details">
+        <span class="player-name">User-Nickname</span>
+        <span class="player-indicator">Player</span>
+      </div>
+
+      <div class="game-stats">
+        <div class="stat-box">
+          <span class="stat-label">Tentativas</span>
+          <span class="stat-value">0</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Tempo</span>
+          <span class="stat-value">00:00</span>
+        </div>
+        <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+          <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-list"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="menu">
+      <button class="menu-button hand-drawn-border" id="btnReset">Reiniciar</button>
+      <button class="menu-button" id="btnTheme">Tema</button>
+    </div>
+  </header>
+
+
+
+  <!-- <main class="game-board">
+    <button class="card hand-drawn-border">?</button>
+    <button class="card hand-drawn-border">?</button>
+    <button class="card hand-drawn-border">?</button>
+    <button class="card hand-drawn-border">?</button>
+    <button class="card hand-drawn-border">?</button>
+    <button class="card hand-drawn-border">?</button>
+    <button class="card hand-drawn-border">?</button>
+    <button class="card hand-drawn-border">?</button>
+    <button class="card hand-drawn-border">?</button>
+    <button class="card hand-drawn-border">?</button>
+    <button class="card hand-drawn-border">?</button>
+    <button class="card hand-drawn-border">?</button>
+  </main> -->
+  <script src="js/index.js"></script>
+</body>
+
 </html>
