@@ -23,7 +23,12 @@ export async function startGame() {
 }
 
 function flipCard(card) {
-  if (isLocked || card === firstCardSelected) return;
+  if (
+    isLocked ||
+    card === firstCardSelected ||
+    (firstCardSelected && firstCardSelected.classList.contains("matched"))
+  )
+    return;
 
   card.textContent = card.dataset.palavra;
   card.classList.add("selected");
@@ -62,10 +67,10 @@ function compareCards() {
 
 function updateAttempts() {
   attempts++;
-  ATTEMPTS.textContent = attempts
+  ATTEMPTS.textContent = attempts;
 }
 
 function resetAttempts() {
-  ATTEMPTS.textContent = "0"
+  ATTEMPTS.textContent = "0";
   attempts = 0;
 }
