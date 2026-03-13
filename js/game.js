@@ -3,16 +3,25 @@ import { shuffle } from "./utils.js";
 
 const CARDS = document.querySelectorAll(".card");
 const ATTEMPTS = document.getElementById("attempts");
+const TIMER = document.getElementById("timer");
 
 let firstCardSelected = null;
 let secondCardSelected = null;
 let attempts = 0;
 let isLocked = false;
+let matches = 0;
+let seconds;
+let minutes;
+let timerInterval;
 
 export async function startGame() {
   resetAttempts();
+  startTimer();
+  matches = 0;
+
   let words = await searchWords();
   let shuffledCards = shuffle([...words, ...words]);
+
   CARDS.forEach((card, index) => {
     card.textContent = "?";
     card.classList.remove("matched");
@@ -51,6 +60,9 @@ function compareCards() {
     secondCardSelected.classList.add("matched");
     firstCardSelected = null;
     secondCardSelected = null;
+    matches++;
+
+    checkGameEnd();
   } else {
     isLocked = true;
     setTimeout(() => {
@@ -73,4 +85,35 @@ function updateAttempts() {
 function resetAttempts() {
   ATTEMPTS.textContent = "0";
   attempts = 0;
+}
+
+function updateTimer() {
+  seconds++;
+  if (seconds === 60) {
+    minutes++;
+    seconds = 0;
+  }
+
+  const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  TIMER.textContent = `${formattedMinutes}:${formattedSeconds}`;
+}
+
+function startTimer() {
+  clearInterval(timerInterval);
+  seconds = 0;
+  minutes = 0;
+  TIMER.textContent = "00:00";
+  timerInterval = setInterval(updateTimer, 1000);
+}
+
+function stopTimer() {
+  clearInterval(timerInterval);
+}
+
+function checkGameEnd() {
+  const ALLMATCHED = matches === CARDS.length / 2;
+  if (ALLMATCHED) {
+    stopTimer();
+  }
 }
